@@ -29,19 +29,29 @@ export const CalculatorDataProvider = (props: any): JSX.Element => {
             case '=': {
                 if (calculatorState.query !== '') {
                     try {
+                        let outcome = evaluate(calculatorState.query)
+
                         setCalculatorState((prevState: IcalculatorState) => {
                             let calculationList = prevState.previousCalculations;
                             
                             calculationList.push({
-                                query: `${calculatorState.query} = ${evaluate(calculatorState.query)}`,
+                                query: `${calculatorState.query} = ${outcome}`,
                                 timestamp: new Date
                             });
 
-                            return { previousCalculations: calculationList, query: '', result: evaluate(calculatorState.query) }
+                            return { previousCalculations: calculationList, query: '', result: evaluate(outcome) }
                         });
                     } catch (error) {
+                        let outcome: string = "";
+
+                        if(error instanceof SyntaxError) {
+                            outcome = "Invalid expression: please check your query again";
+                        } else {
+                            outcome = error as string;
+                        }
+
                         setCalculatorState((prevState: IcalculatorState) => {
-                            return { ...prevState, query: '', result: error }
+                            return { ...prevState, result: outcome }
                         });
                     }
                 }
