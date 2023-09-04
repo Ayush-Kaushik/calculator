@@ -35,6 +35,10 @@ const actions = [
   {
     label: "=",
     value: "=",
+  },
+  {
+    label: ".",
+    value: "."
   }
 ]
 

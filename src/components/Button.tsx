@@ -14,7 +14,6 @@ function Button({ label, value }: ButtonProps) {
         handleClick(event);
     }
 
-
     return (
         <MaterialButton
             variant='contained'

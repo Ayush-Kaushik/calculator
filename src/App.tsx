@@ -1,8 +1,9 @@
+import Container from '@mui/material/Container';
+import Grid from "@mui/material/Grid";
+
 import Calculator from './container/Calculator';
 import History from './container/History';
-import Grid from "@mui/material/Grid";
 import { CalculatorDataProvider } from './context/CalculatorContext';
-import { Container } from '@mui/material';
 
 function App() {
 
