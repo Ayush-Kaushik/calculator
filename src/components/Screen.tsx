@@ -8,11 +8,11 @@ function Screen() {
 
   return (
     <Grid container spacing={2}>
-      <Grid item spacing={2} xs={12}>
-        <TextField label={"Query"} value={calculatorState?.query} fullWidth/>
+      <Grid item xs={12}>
+        <TextField id="text-field-query" label={"Query"} value={calculatorState?.query} fullWidth />
       </Grid>
-      <Grid item spacing={2} xs={12}>
-        <TextField label={"Result"} value={calculatorState?.result} fullWidth/>
+      <Grid item xs={12}>
+        <TextField id="text-field-result" label={"Result"} value={calculatorState?.result} fullWidth />
       </Grid>
     </Grid>
   );

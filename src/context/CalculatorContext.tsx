@@ -31,6 +31,7 @@ export const CalculatorDataProvider = (props: any): JSX.Element => {
                     try {
                         setCalculatorState((prevState: IcalculatorState) => {
                             let calculationList = prevState.previousCalculations;
+                            
                             calculationList.push({
                                 query: `${calculatorState.query} = ${evaluate(calculatorState.query)}`,
                                 timestamp: new Date

@@ -17,10 +17,10 @@ function History() {
                 </ListSubheader>
             }>
                 {
-                    calculatorState?.previousCalculations.map((item) => {
+                    calculatorState?.previousCalculations.map((item, index) => {
                         return (
-                            <ListItem>
-                                <ListItemText primary={item.query} secondary={item.timestamp.toLocaleString()} />
+                            <ListItem key={`list-item-key-${index}`}>
+                                <ListItemText key={`list-item-text-key-${index}`} primary={item.query} secondary={item.timestamp.toLocaleString()} />
                             </ListItem>
                         )
                     })
