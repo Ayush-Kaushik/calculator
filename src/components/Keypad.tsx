@@ -1,25 +1,49 @@
+import { numbers, operators, actions } from '../constants/Keys.constants';
+import { Grid } from '@mui/material';
 import Button from './Button';
-import keyList from '../constants/Keys.constants';
-import "../App.css";
 
-function Keypad() {    
+function Keypad() {
     return (
-        <div className="Keypad-layout">
-            {
-                keyList.map((keyRow, keyListIndex) => {
-                    return (<div key={`div-key-${keyListIndex}`}> {
-                        keyRow.map((key, keyRowIndex) => {
-                            return (<Button 
-                                key={`key-${key.label}-${keyRowIndex}`} 
-                                label={key.label} 
-                                value={key.value}
-                                />)
+        <Grid container spacing={0.5}>
+            <Grid item spacing={0.5} xs={10}>
+                <Grid container spacing={0.5}>
+                    {
+                        numbers.map((number, index) => {
+                            return <Grid item xs={4}>
+                                <Button
+                                    key={`key-number-${number.label}-${index}`}
+                                    label={number.label}
+                                    value={number.value} />
+                            </Grid>
                         })
                     }
-                    </div>)
-                })
-            }
-        </div>
+
+                    {
+                        actions.map((number, index) => {
+                            return <Grid item xs={4}>
+                                <Button
+                                    key={`key-number-${number.label}-${index}`}
+                                    label={number.label}
+                                    value={number.value} />
+                            </Grid>
+                        })
+                    }
+                </Grid>
+            </Grid>
+            <Grid item spacing={0.5} xs={2}>
+                <Grid container spacing={0.5} direction={"column"}>
+                    {
+                        operators.map((operator, index) => {
+                            return <Grid item xs={4}><Button
+                                key={`key-operator-${operator.label}-${index}`}
+                                label={operator.label}
+                                value={operator.value} /></Grid>
+                        })
+                    }
+                </Grid>
+            </Grid>
+        </Grid>
+
     );
 }
 

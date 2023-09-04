@@ -4,7 +4,12 @@ import { evaluate } from 'mathjs';
 interface IcalculatorState {
     query: string,
     result: string,
-    previousCalculations: string[]
+    previousCalculations: CalculationHistoryItem[]
+}
+
+type CalculationHistoryItem = {
+    query: string,
+    timestamp: Date
 }
 
 export type CalculatorContextValue = {
@@ -19,20 +24,17 @@ export const CalculatorDataProvider = (props: any): JSX.Element => {
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         let buttonEvent = event.target as HTMLButtonElement;
-        console.log(buttonEvent.value);
 
         switch (buttonEvent.value) {
             case '=': {
                 if (calculatorState.query !== '') {
                     try {
                         setCalculatorState((prevState: IcalculatorState) => {
-
-                            console.log(prevState);
-
                             let calculationList = prevState.previousCalculations;
-                            console.log(calculationList);
-                            calculationList.push(`${calculatorState.query} = ${evaluate(calculatorState.query)}\n`);
-                            console.log(calculationList);
+                            calculationList.push({
+                                query: `${calculatorState.query} = ${evaluate(calculatorState.query)}`,
+                                timestamp: new Date
+                            });
 
                             return { previousCalculations: calculationList, query: '', result: evaluate(calculatorState.query) }
                         });
@@ -84,7 +86,6 @@ export const CalculatorDataProvider = (props: any): JSX.Element => {
                 calculatorState,
                 handleClick
             }}
-
         >
             {props.children}
         </CalculatorDataContext.Provider>
