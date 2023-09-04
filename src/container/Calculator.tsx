@@ -5,6 +5,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
 function Calculator() {
+
     return (
         <Paper elevation={3}>
             <Box p={2}>

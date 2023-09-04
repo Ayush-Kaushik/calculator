@@ -12,7 +12,7 @@ function Screen() {
         <TextField label={"Query"} value={calculatorState?.query} fullWidth/>
       </Grid>
       <Grid item spacing={2} xs={12}>
-        <TextField label={"Result"} value={calculatorState?.result} fullWidth />
+        <TextField label={"Result"} value={calculatorState?.result} fullWidth/>
       </Grid>
     </Grid>
   );
